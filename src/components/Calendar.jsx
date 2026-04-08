@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import dayjs from "dayjs";
 import { getMonthDays } from "../utils/calendar";
 import Day from "./Day";
@@ -7,6 +7,16 @@ const Calendar = () => {
   const [currentMonth, setCurrentMonth] = useState(dayjs());
   const [startDate, setStartDate] = useState(null);
   const [endDate, setEndDate] = useState(null);
+
+  // ✅ LOCAL STORAGE STATE (ADDED)
+  const [note, setNote] = useState(() => {
+    return localStorage.getItem("calendar-note") || "";
+  });
+
+  // ✅ AUTO SAVE (ADDED)
+  useEffect(() => {
+    localStorage.setItem("calendar-note", note);
+  }, [note]);
 
   const days = getMonthDays(currentMonth);
 
@@ -29,11 +39,11 @@ const Calendar = () => {
 
       {/* CARD */}
       <div className="
-  w-[320px] bg-white rounded-xl overflow-hidden
-  shadow-xl
-  transition-all duration-300 ease-in-out
-  hover:-translate-y-3 hover:scale-[1.02] hover:shadow-2xl
-">
+        w-[320px] bg-white rounded-xl overflow-hidden
+        shadow-xl
+        transition-all duration-300 ease-in-out
+        hover:-translate-y-3 hover:scale-[1.02] hover:shadow-2xl
+      ">
 
         {/* IMAGE */}
         <div
@@ -52,30 +62,30 @@ const Calendar = () => {
           </div>
         </div>
 
-        {/* 🔥 MONTH SWITCH (ADD THIS) */}
-<div className="flex justify-between items-center px-4 pt-3 text-sm">
-  <button
-    onClick={() =>
-      setCurrentMonth(currentMonth.subtract(1, "month"))
-    }
-    className="px-2 py-1 rounded hover:bg-gray-200"
-  >
-    ◀
-  </button>
+        {/* MONTH SWITCH */}
+        <div className="flex justify-between items-center px-4 pt-3 text-sm">
+          <button
+            onClick={() =>
+              setCurrentMonth(currentMonth.subtract(1, "month"))
+            }
+            className="px-2 py-1 rounded hover:bg-gray-200"
+          >
+            ◀
+          </button>
 
-  <span className="font-semibold">
-    {currentMonth.format("MMMM YYYY")}
-  </span>
+          <span className="font-semibold">
+            {currentMonth.format("MMMM YYYY")}
+          </span>
 
-  <button
-    onClick={() =>
-      setCurrentMonth(currentMonth.add(1, "month"))
-    }
-    className="px-2 py-1 rounded hover:bg-gray-200"
-  >
-    ▶
-  </button>
-</div>
+          <button
+            onClick={() =>
+              setCurrentMonth(currentMonth.add(1, "month"))
+            }
+            className="px-2 py-1 rounded hover:bg-gray-200"
+          >
+            ▶
+          </button>
+        </div>
         
         
         {/* CONTENT */}
@@ -84,7 +94,13 @@ const Calendar = () => {
           {/* NOTES */}
           <div className="w-1/3 text-xs">
             <h3 className="font-semibold mb-2">Notes</h3>
-            <textarea className="w-full h-24 border p-1 rounded" />
+            
+            {/* ✅ UPDATED TEXTAREA */}
+            <textarea
+              value={note}
+              onChange={(e) => setNote(e.target.value)}
+              className="w-full h-24 border p-1 rounded"
+            />
           </div>
 
           {/* CALENDAR */}
