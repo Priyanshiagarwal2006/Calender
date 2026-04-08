@@ -1,20 +1,133 @@
-<<<<<<< HEAD
-# React + Vite
+# 📅 Interactive Calendar Component
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A modern, interactive, and visually refined calendar component built using **React** and **Tailwind CSS**.
+This project focuses on delivering a clean user experience, smooth interactions, and a responsive layout inspired by real-world calendar designs.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## 🚀 Features
 
-## React Compiler
+* 📆 **Dynamic Calendar Grid**
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+  * Displays full month including previous & next month spillover dates
+  * Accurate date rendering using Day.js
 
-## Expanding the ESLint configuration
+* 🎯 **Date Range Selection**
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
-=======
-# Calender
->>>>>>> 211937c5903bf4e6c168a62d140352c66da994a1
+  * Select start and end dates
+  * Highlights selected range with clear visual feedback
+
+* 📝 **Notes Section**
+
+  * Add and manage notes alongside the calendar
+  * Lightweight and intuitive UI
+
+* 🎨 **Smooth UI Interactions**
+
+  * Hover effects and subtle animations
+  * Interactive calendar cells
+
+* 📌 **Holiday Highlighting**
+
+  * Sundays are visually distinguished
+
+* 📱 **Responsive Design**
+
+  * Works seamlessly across desktop and mobile devices
+
+* 🧩 **Component-Based Architecture**
+
+  * Clean and modular React structure
+
+---
+
+## 🛠️ Tech Stack
+
+* **React.js**
+* **Tailwind CSS**
+* **Day.js**
+
+---
+
+## 📂 Project Structure
+
+```
+calendar-app/
+│
+├── src/
+│   ├── components/
+│   │   ├── Calendar.jsx
+│   │   ├── Day.jsx
+│   │
+│   ├── utils/
+│   │   ├── calendar.js
+│   │
+│   ├── App.jsx
+│   ├── main.jsx
+│
+├── public/
+├── index.html
+└── package.json
+```
+
+---
+
+## ⚙️ Installation & Setup
+
+1. Clone the repository:
+
+```bash
+git clone https://github.com/Priyanshiagarwal2006/Calender.git
+```
+
+2. Navigate to the project folder:
+
+```bash
+cd calendar-app
+```
+
+3. Install dependencies:
+
+```bash
+npm install
+```
+
+4. Run the development server:
+
+```bash
+npm run dev
+```
+
+---
+
+## 💡 Key Highlights
+
+* Focus on **UI/UX clarity and interaction design**
+* Efficient **state management using React hooks**
+* Lightweight and fast performance
+* Clean and maintainable code structure
+
+---
+
+## 🌐 Deployment
+
+The project can be easily deployed using:
+
+* Vercel
+* Netlify
+* GitHub Pages
+
+---
+
+## 📸 Preview
+
+A clean and minimal calendar interface with interactive features, inspired by real-world wall calendar layouts.
+
+---
+
+## ✨ Future Enhancements
+
+* Event management system
+* Drag-and-drop scheduling
+* API integration for real holidays
+* Multi-month view
