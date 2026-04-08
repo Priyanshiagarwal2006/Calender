@@ -79,7 +79,7 @@ const Calendar = () => {
         
         
         {/* CONTENT */}
-        <div className="p-4 flex gap-3">
+        <div className="p-4 flex flex-col-reverse md:flex-row gap-3">
 
           {/* NOTES */}
           <div className="w-1/3 text-xs">
