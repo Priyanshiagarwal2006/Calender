@@ -6,40 +6,38 @@ import Day from "./Day";
 const Calendar = () => {
   const [currentMonth, setCurrentMonth] = useState(dayjs());
 
-  // ✅ LOAD saved dates (ADDED)
+  // ✅ FIXED: load saved dates properly
   const [startDate, setStartDate] = useState(() => {
     const saved = localStorage.getItem("start-date");
-    return saved ? dayjs(saved) : null;
+    return saved ? dayjs(saved, "YYYY-MM-DD") : null;
   });
 
   const [endDate, setEndDate] = useState(() => {
     const saved = localStorage.getItem("end-date");
-    return saved ? dayjs(saved) : null;
+    return saved ? dayjs(saved, "YYYY-MM-DD") : null;
   });
 
-  // ✅ LOCAL STORAGE STATE (existing)
+  // ✅ LOCAL STORAGE (notes)
   const [note, setNote] = useState(() => {
     return localStorage.getItem("calendar-note") || "";
   });
 
-  // ✅ SAVE NOTE (existing)
   useEffect(() => {
     localStorage.setItem("calendar-note", note);
   }, [note]);
 
-  // ✅ SAVE startDate (ADDED)
+  // ✅ FIXED: save dates in correct format
   useEffect(() => {
     if (startDate) {
-      localStorage.setItem("start-date", startDate.toISOString());
+      localStorage.setItem("start-date", startDate.format("YYYY-MM-DD"));
     } else {
       localStorage.removeItem("start-date");
     }
   }, [startDate]);
 
-  // ✅ SAVE endDate (ADDED)
   useEffect(() => {
     if (endDate) {
-      localStorage.setItem("end-date", endDate.toISOString());
+      localStorage.setItem("end-date", endDate.format("YYYY-MM-DD"));
     } else {
       localStorage.removeItem("end-date");
     }
