@@ -1,4 +1,4 @@
-# 📅 Interactive Calendar Component
+# 📅 Interactive Calendar 
 
 A modern, interactive, and visually refined calendar component built using **React** and **Tailwind CSS**.
 This project focuses on delivering a clean user experience, smooth interactions, and a responsive layout inspired by real-world calendar designs.
