@@ -5,18 +5,45 @@ import Day from "./Day";
 
 const Calendar = () => {
   const [currentMonth, setCurrentMonth] = useState(dayjs());
-  const [startDate, setStartDate] = useState(null);
-  const [endDate, setEndDate] = useState(null);
 
-  // ✅ LOCAL STORAGE STATE (ADDED)
+  // ✅ LOAD saved dates (ADDED)
+  const [startDate, setStartDate] = useState(() => {
+    const saved = localStorage.getItem("start-date");
+    return saved ? dayjs(saved) : null;
+  });
+
+  const [endDate, setEndDate] = useState(() => {
+    const saved = localStorage.getItem("end-date");
+    return saved ? dayjs(saved) : null;
+  });
+
+  // ✅ LOCAL STORAGE STATE (existing)
   const [note, setNote] = useState(() => {
     return localStorage.getItem("calendar-note") || "";
   });
 
-  // ✅ AUTO SAVE (ADDED)
+  // ✅ SAVE NOTE (existing)
   useEffect(() => {
     localStorage.setItem("calendar-note", note);
   }, [note]);
+
+  // ✅ SAVE startDate (ADDED)
+  useEffect(() => {
+    if (startDate) {
+      localStorage.setItem("start-date", startDate.toISOString());
+    } else {
+      localStorage.removeItem("start-date");
+    }
+  }, [startDate]);
+
+  // ✅ SAVE endDate (ADDED)
+  useEffect(() => {
+    if (endDate) {
+      localStorage.setItem("end-date", endDate.toISOString());
+    } else {
+      localStorage.removeItem("end-date");
+    }
+  }, [endDate]);
 
   const days = getMonthDays(currentMonth);
 
@@ -95,7 +122,6 @@ const Calendar = () => {
           <div className="w-1/3 text-xs">
             <h3 className="font-semibold mb-2">Notes</h3>
             
-            {/* ✅ UPDATED TEXTAREA */}
             <textarea
               value={note}
               onChange={(e) => setNote(e.target.value)}
